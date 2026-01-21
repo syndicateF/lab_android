@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolbarFakultas" parent="Theme.MaterialComponents.DayNight">
+        <!-- <item name="android:background">@color/hitam</item> -->
+    </style>
+    <style name="PopupFakultas" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">#ff0000</item>
+    </style>
+</resources>

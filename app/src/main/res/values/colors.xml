@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="hitam">#FF16161E</color>
+    <color name="color_bg_fakultas">#FFF2F2F2</color>
+    <color name="color_item_fakultas">@color/hitam</color>
+    <color name="warnaContainer">@color/white</color>
+    <color name="top_fakultas">#FFF5F5F5</color>
+</resources>
