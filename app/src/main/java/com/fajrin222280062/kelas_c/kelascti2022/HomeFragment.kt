@@ -2,15 +2,16 @@ package com.fajrin222280062.kelas_c.kelascti2022
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -18,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FakultasActivity : AppCompatActivity() {
+class HomeFragment : Fragment() {
 
     private lateinit var swipeFakultas: SwipeRefreshLayout
     private lateinit var recyclerFakultas: RecyclerView
@@ -26,27 +27,29 @@ class FakultasActivity : AppCompatActivity() {
     private var fakultasAsli: List<DataValue> = listOf()
     private var fakultasTampil: List<DataValue> = listOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_fakultas)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        initView()
-        setupToolbar()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    private fun setupToolbar() {
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Fakultas"
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+        initView(view)
+        setupToolbar(view)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_search, menu)
+    private fun setupToolbar(view: View) {
+        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.title = "Fakultas"
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
         searchView.queryHint = "Cari fakultas..."
@@ -60,7 +63,7 @@ class FakultasActivity : AppCompatActivity() {
                 return true
             }
         })
-        return true
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun filterData(keyword: String) {
@@ -74,10 +77,10 @@ class FakultasActivity : AppCompatActivity() {
         tampilkanData(hasil)
     }
 
-    private fun initView() {
-        swipeFakultas = findViewById(R.id.swipeFakultas)
-        recyclerFakultas = findViewById(R.id.listFakultas)
-        recyclerFakultas.layoutManager = GridLayoutManager(this, 2)
+    private fun initView(view: View) {
+        swipeFakultas = view.findViewById(R.id.swipeFakultas)
+        recyclerFakultas = view.findViewById(R.id.listFakultas)
+        recyclerFakultas.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerFakultas.setHasFixedSize(true)
         ambilDataFakultas()
         swipeFakultas.setOnRefreshListener {
@@ -102,16 +105,16 @@ class FakultasActivity : AppCompatActivity() {
                             fakultasAsli = data
                             tampilkanData(data)
                         } else {
-                            Toast.makeText(this@FakultasActivity, "Data kosong", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Data kosong", Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(this@FakultasActivity, "Gagal mengambil data", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Gagal mengambil data", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<List<DataValue>?>, t: Throwable) {
                     hideLoading()
-                    Toast.makeText(this@FakultasActivity, "Gagal koneksi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Gagal koneksi", Toast.LENGTH_SHORT).show()
                 }
             }
         )
@@ -127,12 +130,12 @@ class FakultasActivity : AppCompatActivity() {
 
     private fun tampilkanData(data: List<DataValue>) {
         fakultasTampil = data
-        adapter = FakultasAdapter(this, data, object : FakultasAdapter.ItemClickListener {
+        adapter = FakultasAdapter(requireContext(), data, object : FakultasAdapter.ItemClickListener {
             override fun onItemClick(view: View?, adapterPosition: Int) {
                 val fakultas = fakultasTampil[adapterPosition]
                 val kode = fakultas.idFakultas
                 val nama = fakultas.namaFakultas
-                val intent = Intent(this@FakultasActivity, ProdiActivity::class.java)
+                val intent = Intent(requireContext(), ProdiActivity::class.java)
                 intent.putExtra("kode", kode)
                 intent.putExtra("nama", nama)
                 startActivity(intent)

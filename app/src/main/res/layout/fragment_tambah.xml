@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/warnaContainer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tambah Mahasiswa"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_item_fakultas"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- NIM -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NIM"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etNim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan NIM"
+            android:inputType="number"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Nama -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Nama Lengkap"
+            android:inputType="textPersonName"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Kelas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kelas"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etKelas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Kelas (A/B/C)"
+            android:inputType="textCapCharacters"
+            android:maxLength="1"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- No HP -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No HP"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etNohp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan No HP"
+            android:inputType="phone"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Jenis Kelamin -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin"
+            android:textColor="@color/color_item_fakultas"/>
+        <Spinner
+            android:id="@+id/spinnerJenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Tempat Lahir -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tempat Lahir"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etTempatLahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Tempat Lahir"
+            android:inputType="text"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Tanggal Lahir -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Lahir"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etTanggalLahir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Format: YYYY-MM-DD"
+            android:inputType="date"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Alamat -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textColor="@color/color_item_fakultas"/>
+        <EditText
+            android:id="@+id/etAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan Alamat"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Dropdown Fakultas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fakultas"
+            android:textColor="@color/color_item_fakultas"/>
+        <Spinner
+            android:id="@+id/spinnerFakultas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prodi"
+            android:textColor="@color/color_item_fakultas"/>
+        <Spinner
+            android:id="@+id/spinnerProdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_fakultas"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/top_fakultas"/>
+
+    </LinearLayout>
+</ScrollView>

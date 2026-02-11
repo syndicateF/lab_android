@@ -14,15 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme._222280062Fajrin"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".EditMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MahasiswaActivity"
+            android:exported="false" />
         <activity
             android:name=".ProdiActivity"
             android:exported="false" />
         <activity
             android:name=".FakultasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
